@@ -94,7 +94,9 @@ To get the project up and running, you would typically follow these steps for ea
 ### Prerequisites
 
 - Node.js and npm (or yarn)
-- MongoDB instance (local or cloud-hosted)
+- Update MongoDB URL in server project
+  - username: "contributor"
+  - password: "ZwHhyAnCmFTqOTFy"
 
 ## Server API Endpoints
 
