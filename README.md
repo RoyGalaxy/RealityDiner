@@ -76,6 +76,10 @@ To get the project up and running, you would typically follow these steps for ea
 3.  **Set up environment variables**:
     Each part of the application (especially the server) will likely require a `.env` file with configuration details such as database connection strings, API keys (Stripe, etc.), and JWT secrets. Create a `.env` file in the respective directories based on a `.env.example` file if provided, or according to the project's specific needs.
 
+    **For Database Setup inside server**
+    username: 'contributor',
+    password: 'ZwHhyAnCmFTqOTFy'
+
 4.  **Run the development server**:
     For frontend applications (client, admin, superAdmin), this is often:
     ```bash
