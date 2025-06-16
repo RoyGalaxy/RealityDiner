@@ -10,7 +10,7 @@ const ClientDashboard = () => {
   const { restaurantId } = useContext(ShopContext);
 
   useEffect(() => {
-    if(!restaurantId) return;
+    if (!restaurantId) return;
     const fetchOrders = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/orders/${restaurantId}`, {
@@ -49,16 +49,14 @@ const ClientDashboard = () => {
         <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
         <div className="mb-6">
           <h3 className="text-lg font-semibold mb-2">New Orders</h3>
-          {orders && orders.length > 0 ? (
+          {orders && orders.length > 0 && (
             <OrderList orders={orders} onAccept={handleAccept} onReject={handleReject} />
-          ) : (
-            <p className="text-gray-600">No new orders</p>
           )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Graph title="Sales Graph" />
-          <Graph title="Orders Graph" />
-          <Graph title="Revenue" />
+          <Graph title="Sales Graph" description="This graph shows the total sales over time." />
+          <Graph title="Orders Graph" description="This graph displays the number of orders placed." />
+          <Graph title="Revenue" description="This graph represents the revenue generated." />
         </div>
       </div>
     </Layout>
