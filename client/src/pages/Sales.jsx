@@ -48,7 +48,7 @@ const Sales = () => {
             See food before you order — with immersive AR
           </p>
           <button
-            onClick={() => navigate('/categories')}
+            onClick={() => navigate('/home')}
             className="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg text-lg font-semibold transition-colors"
           >
             Try RealityDiner Now
