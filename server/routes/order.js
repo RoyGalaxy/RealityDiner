@@ -5,18 +5,6 @@ const Order = require("../models/Order")
 
 //  CREATE 
 router.post('/',verifyTokenAndAuthorization, placeStripeOrder)
-// router.post("/",verifyTokenAndAuthorization, async(req,res)=> {
-//     const newOrder = new Order(req.body)
-
-//     try{
-//         const savedOrder = await newOrder.save()
-//         res.status(200).json(savedOrder)
-//     }catch(err){
-//         if(res.headersSent !== true) {
-//             res.status(500).json(err)
-//         }
-//     }
-// })
 
 // UPDATE
 router.put("/:id",verifyTokenAndAdmin,async(req,res) => {
@@ -27,7 +15,7 @@ router.put("/:id",verifyTokenAndAdmin,async(req,res) => {
             },
             {new:true}
         )
-        res.status(200).json(updatedOrder)
+        res.status(200).json({success:true, data: updatedOrder})
     }catch(err){
         res.status(500).json(err)
     }

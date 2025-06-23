@@ -8,6 +8,7 @@ import { ShopContext } from '@/context/ShopContext';
 const ClientDashboard = () => {
   const [orders, setOrders] = useState([]);
   const { restaurantId } = useContext(ShopContext);
+  const token = Cookies.get('clientToken');
 
   useEffect(() => {
     if (!restaurantId) return;
@@ -16,7 +17,7 @@ const ClientDashboard = () => {
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/orders/${restaurantId}`, {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${Cookies.get('clientToken')}`,
+            'Authorization': `Bearer ${token}`,
           },
         });
         if (!response.ok) {
@@ -32,15 +33,39 @@ const ClientDashboard = () => {
     fetchOrders();
   }, [restaurantId]);
 
+  const updateOrderStatus = async (orderId, newStatus) => {
+    try{
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/orders/${orderId}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
+      })
+      const jsonRes = await response.json();
+      if (jsonRes.success) {
+        console.log('Order status updated successfully');
+        setOrders(prevOrders =>
+          prevOrders.map(order =>
+            order._id === orderId ? { ...order, status: newStatus } : order
+          )
+        );
+      }
+    } catch (err) {
+      console.error('Error updating order status:', err);
+    }
+  };
+
 
   const handleAccept = (orderId) => {
     // Logic to accept order
-    console.log(`Order ${orderId} accepted`);
+    updateOrderStatus(orderId, 'accepted');
   };
 
   const handleReject = (orderId) => {
     // Logic to reject order
-    console.log(`Order ${orderId} rejected`);
+    updateOrderStatus(orderId, 'rejected');
   };
 
   return (
@@ -63,4 +88,4 @@ const ClientDashboard = () => {
   );
 };
 
-export default ClientDashboard; 
+export default ClientDashboard;
