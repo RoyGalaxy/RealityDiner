@@ -7,10 +7,10 @@ const User = require("../models/User");
 const fs = require("fs")
 
 // Create New Restaurant
-router.post('/create/:id', verifyTokenAndAdmin, async (req,res) => {
+router.post('/create/:userId', verifyTokenAndAdmin, async (req,res) => {
     try{
         // Check if the user is an accepted restaurant owner
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.userId);
         if (!user || user.role !== 'restaurant_owner' || user.isVerified !== true) {
             return res.status(403).json({ success: false, message: "Only accepted restaurant owners can create a restaurant." });
         }
