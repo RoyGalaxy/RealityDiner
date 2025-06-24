@@ -15,21 +15,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec"
-]
-
 const data = [
   { name: 'Jan', sales: 500, orders: 1040, revenue: 2400 },
   { name: 'Feb', sales: 300, orders: 1039, revenue: 1390 },
@@ -58,7 +43,7 @@ const chartConfig = {
 };
 
 
-const Graph = ({ title, description, data }) => {
+const Graph = ({ title, description }) => {
   return (
     <Card className="pt-0">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
@@ -120,7 +105,24 @@ const Graph = ({ title, description, data }) => {
               }
             />
             <Area
-              dataKey={title.toLowerCase()}
+              dataKey="sales"
+              type="natural"
+              stroke="#8884d8"
+              fill="#8884d8"
+              fillOpacity={1}
+              style={{ mixBlendMode: 'multiply' }}
+            />
+            <Area
+              dataKey="orders"
+              type="natural"
+              stroke="#82ca9d"
+              fil="#82ca9d"
+              fillOpacity={0.5}
+              style={{ mixBlendMode: 'multiply' }}
+
+            />
+            <Area
+              dataKey="revenue"
               type="natural"
               stroke="#ffc658"
               fill="#ffc658"
