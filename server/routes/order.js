@@ -31,36 +31,19 @@ router.delete("/:id",verifyTokenAndAdmin, async(req,res)=>{
     }
 })
 
-// GET User Order
-router.get("/find/:userId",verifyTokenAndAuthorization, async(req,res)=>{
-    try{
-        const orders = await Order.find({userId: req.params.userId})
-        res.status(200).json({order})
-    }catch(err){
-        res.status(500).json(err)
-    }
-})
-
-// GET ALL
-router.get("/:restaurantId", verifyTokenAndAdmin, async (req,res) => {
-    try{
-        const {restaurantId} = req.params;
-        const orders = await Order.find({restaurantId})
-        res.status(200).json(orders)
-    }catch(err){
-        res.status(500).json(err)
-    }
-})
-
 // GET MONTHLY INCOME
-router.get("/income",verifyTokenAndAdmin, async(req,res) => {
+router.get("/metrics",verifyTokenAndAdmin, async(req,res) => {    
     const date = new Date()
     const lastMonth = new Date(date.setMonth(date.getMonth() - 1))
     const previousYear = new Date(new Date().setFullYear(lastMonth.getFullYear() - 1))
 
+
     try{
         const income = await Order.aggregate([
-            {$match: {createdAt : {$gte: previousYear}}},
+            {$match: {
+                createdAt : {$gte: previousYear},
+                restaurantId:  req.user.restaurantId
+            }},
             { 
                 $project: {
                     month : {$month: "$createdAt"},
@@ -70,13 +53,15 @@ router.get("/income",verifyTokenAndAdmin, async(req,res) => {
             {
                 $group:{
                     _id: "$month",
-                    total: {$sum: "$sales"}
+                    revenue: {$sum: "$sales"},
+                    orders: {$sum: 1}
                 }
             }
         ])
-        res.status(200).json(income)
+        res.status(200).json({success:true, data: income})
     }catch(err){
         res.status(500).json(err)
+        console.log(err)
     }
 })
 
@@ -105,6 +90,27 @@ router.get("/income/today",verifyTokenAndAdmin, async (req,res) => {
             }
         ])
         res.status(200).json(income)
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+// GET User Order
+router.get("/find/:userId",verifyTokenAndAuthorization, async(req,res)=>{
+    try{
+        const orders = await Order.find({userId: req.params.userId})
+        res.status(200).json({order})
+    }catch(err){
+        res.status(500).json(err)
+    }
+})
+
+// GET ALL By Restaurant
+router.get("/:restaurantId", verifyTokenAndAdmin, async (req,res) => {
+    try{
+        const {restaurantId} = req.params;
+        const orders = await Order.find({restaurantId})
+        res.status(200).json(orders)
     }catch(err){
         res.status(500).json(err)
     }

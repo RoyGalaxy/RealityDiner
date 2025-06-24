@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken")
 const User = require("../models/User")
+const Restaurant = require("../models/Restaurant")
 
 const verifyToken = (req,res,next) => {
     const authHeader = req.headers.authorization
@@ -28,10 +29,15 @@ const verifyTokenAndAuthorization = (req,res,next)=>{
     })
 }
 
-const verifyTokenAndAdmin = (req,res,next)=>{
+const verifyTokenAndAdmin = async (req,res,next)=>{
     verifyToken(req,res,async ()=>{
         const user = req.user.id != 'admin' ? await User.findById(req.user.id) : req.user;
-        if(user.role == 'admin' || user.role == 'restaurant_owner'){
+        if(user.role == "restaurant_owner"){
+            const restaurant = await Restaurant.findOne({ownerId: req.user.id})
+            req.user.restaurantId = restaurant._id
+            next()
+        }
+        else if(user.role == 'admin'){
             next()
         }else{
             res.status(403).json({message: "You are not allowed to do that!"})
