@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import Layout from '../components/layout/Layout';
 import OrderList from '../components/OrderList';
+import Orders from './Orders';
 import Graph from '../components/Graph';
 import Cookies from 'js-cookie';
 import { ShopContext } from '@/context/ShopContext';
@@ -102,6 +103,9 @@ const ClientDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Graph title="Revenue" description="This graph shows the total sales over time." data={orderData}/>
           <Graph title="Orders" description="This graph displays the number of orders placed." data={orderData}/>
+        </div>
+        <div className="mt-6">
+          <Graph />
         </div>
       </div>
     </Layout>
