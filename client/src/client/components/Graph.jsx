@@ -120,7 +120,7 @@ const Graph = ({ title, description, data }) => {
               }
             />
             <Area
-              dataKey={title.toLowerCase()}
+              dataKey={title?.toLowerCase()}
               type="natural"
               stroke="#ffc658"
               fill="#ffc658"
