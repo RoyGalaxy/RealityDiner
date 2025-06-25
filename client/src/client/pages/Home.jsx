@@ -105,7 +105,7 @@ const ClientDashboard = () => {
           <Graph title="Orders" description="This graph displays the number of orders placed." data={orderData}/>
         </div>
         <div className="mt-6">
-          <Graph />
+          <Orders />
         </div>
       </div>
     </Layout>
