@@ -119,9 +119,7 @@ const CreateRestaurant = () => {
         }
       });
 
-      formDataToSend.append('ownerId', userId);
-
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/restaurants/create/${userId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/restaurants/create`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

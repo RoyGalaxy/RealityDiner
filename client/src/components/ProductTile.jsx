@@ -27,7 +27,7 @@ const ProductTile = () => {
         <div
           onClick={() => navigate(`/product/${products[0]._id}`)}
           style={{
-            backgroundImage: products[0] ? `url('${import.meta.env.VITE_BACKEND_URL}${products[0]?.image}')` : ''
+            backgroundImage: products[0] ? `url('${products[0]?.image}')` : ''
           }}
           className={`bg-cover bg-center bg-slate-300 aspect-square flex items-end text-white text-center rounded-lg shadow-lg mb-2 transition-transform duration-300 hover:scale-[1.02] cursor-pointer`}
         >
@@ -60,7 +60,7 @@ const ProductTile = () => {
               <div
                 onClick={() => navigate(`/product/${product?._id}`)}
                 style={{
-                  backgroundImage: `url('${import.meta.env.VITE_BACKEND_URL}${product?.image}')`
+                  backgroundImage: `url('${product?.image.replace("w800-h800","w400-h400")}')`
                 }}
                 className={`bg-cover bg-center bg-slate-300 aspect-square flex items-end text-white text-center rounded-lg shadow-lg mb-2 transition-transform duration-300 hover:scale-[1.02] cursor-pointer`}
               >

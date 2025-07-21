@@ -22,8 +22,8 @@ const Home = () => {
     fetchRestaurants();
   }, []);
 
-  const handleClick = (restaurantId) => {
-    setRestaurant(restaurantId);
+  const handleClick = (restaurant) => {
+    setRestaurant(restaurant);
     navigate(`/categories/`);
   }
 
@@ -37,7 +37,7 @@ const Home = () => {
               <img src={`${import.meta.env.VITE_BACKEND_URL}${restaurant.logoUrl}`} alt={restaurant.name} className='w-32 h-32 object-cover rounded-lg mr-4' />
               <div className='flex flex-col items-start h-full p-4 justify-between'>
                 <h3 className='text-xl font-semibold text-gray-800 mb-1'>{restaurant.name}</h3>
-                <div onClick={() => handleClick(restaurant._id)} className='mt-2'>
+                <div onClick={() => handleClick(restaurant)} className='mt-2'>
                   <button className='bg-primary text-white rounded-lg px-5 py-2 transition-colors duration-300 hover:bg-primary-dark'>View Menu</button>
                 </div>
               </div>

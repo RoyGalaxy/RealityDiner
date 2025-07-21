@@ -35,7 +35,7 @@ const Product = () => {
             <FiBox />
             View in 3D
           </button>
-          <img src={product && `${import.meta.env.VITE_BACKEND_URL}${product?.image}`} className='w-full aspect-square rounded-xl shadow-lg bg-slate-300 mb-8' alt="" />
+          <img src={product && product?.image} className='w-full aspect-square rounded-xl shadow-lg bg-slate-300 mb-8' alt="" />
         </AnimatedContent>
         {/* Product Info */}
         <div className='px-3 md:p-12'>

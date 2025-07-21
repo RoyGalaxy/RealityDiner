@@ -7,16 +7,16 @@ const User = require("../models/User");
 const fs = require("fs")
 
 // Create New Restaurant
-router.post('/create/:userId', verifyTokenAndAdmin, async (req,res) => {
+router.post('/create/', verifyTokenAndAdmin, async (req,res) => {
     try{
         // Check if the user is an accepted restaurant owner
-        const user = await User.findById(req.params.userId);
+        const user = await User.findById(req.user.id);
         if (!user || user.role !== 'restaurant_owner' || user.isVerified !== true) {
             return res.status(403).json({ success: false, message: "Only accepted restaurant owners can create a restaurant." });
         }
         const form = new formidable.IncomingForm({ multiples: true, keepExtensions: true });
         const [fields, files] = await form.parse(req)
-        fields['ownerId'] = [req.params.id];
+        fields['ownerId'] = [req.user.id];
 
         // Check for existing retaurant with same name
         const restaurant = await Restaurant.findOne({name: fields['name'][0]})

@@ -42,7 +42,7 @@ const MenuItem = ({ product }) => {
       <div className="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 relative">
         <div className={`flex justify-center items-center h-48 mb-4 ${product.image ? '' : 'bg-gray-200 animate-pulse'}`}>
           {product.image ? (
-            <img src={`${import.meta.env.VITE_BACKEND_URL}${product.image}`} alt={product.name} className="w-40 h-40 object-cover rounded-md" />
+            <img src={product.image.replace("w800-h800","w400-h400")} alt={product.name} className="w-40 h-40 object-cover rounded-md" />
           ) : (
             <span className="text-gray-500">Image not available</span>
           )}

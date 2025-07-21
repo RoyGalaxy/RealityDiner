@@ -27,7 +27,7 @@ const CategoryTiles = () => {
         <div 
           onClick={() => categories[0] && navigate(`/category/${categories[0]}`)}
           style={{
-            backgroundImage: `url('${import.meta.env.VITE_BACKEND_URL}${getCategoryImage(categories[0])}')`
+            backgroundImage: `url('${getCategoryImage(categories[0])}')`
           }}
           className={`bg-cover bg-center bg-slate-300 aspect-square flex items-center justify-center text-white text-center p-6 rounded-lg shadow-lg mb-2 hover:scale-[1.02] hover:shadow-xl transition-all cursor-pointer ${categories[0] ? '' : 'animate-pulse'}`}>
           <h1 className="text-3xl font-bold">{categories[0] || 'Loading...'}</h1>
@@ -52,7 +52,7 @@ const CategoryTiles = () => {
               <div
                 onClick={() => navigate(`/category/${category}`)}
                 style={{
-                  backgroundImage: `url('${import.meta.env.VITE_BACKEND_URL}${getCategoryImage(category)}')`
+                  backgroundImage: `url('${getCategoryImage(category)}')`
                 }}
                 className="bg-cover bg-center bg-slate-300 aspect-square flex items-center justify-center p-6 text-2xl font-bold tracking-wide text-white rounded-lg shadow-lg hover:scale-[1.02] hover:shadow-xl transition-all cursor-pointer">
                 {category}

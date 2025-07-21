@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 const NavBar = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const { getCartCount, setRestaurant } = useContext(ShopContext)
+  const { getCartCount, setRestaurant, restaurantName } = useContext(ShopContext)
 
   const handleBack = () => {
     if (location.pathname === '/') {
@@ -32,7 +32,7 @@ const NavBar = () => {
       {/* <h1 className='text-xl text-[#111] font-bold tracking-wide'>Black Pepper</h1> */}
       <div onClick={handleLogoClick}>
         <SplitText
-          text="Reality Diner"
+          text={restaurantName}
           className="text-2xl font-semibold text-center"
           delay={100}
           animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
