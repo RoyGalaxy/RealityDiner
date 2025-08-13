@@ -366,8 +366,6 @@
               continue
             }
             getUser(order.userId).then(user => {
-              console.log(user)
-
               let btn = document.createElement("button")
               btn.type = "button"
               btn.className = "collapsible"
@@ -395,7 +393,6 @@
               })
               }
               btn.appendChild(acceptBtn)
-              console.log(order)
               
               const content = document.createElement("div")
               content.className = "content"

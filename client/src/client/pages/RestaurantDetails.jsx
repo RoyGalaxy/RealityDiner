@@ -39,7 +39,6 @@ const RestaurantDetails = () => {
       if (response.ok) {
         const data = await response.json();
         setRestaurant(data);
-        console.log(data);
         setFormData(data);
       } else if (response.status === 404) {
         // Restaurant not found, show create button

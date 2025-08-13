@@ -303,7 +303,6 @@ const currencySymbol = "AED";
     let jsonRes = res.json()
     jsonRes.then(data => {
       const todayIncomElm = document.getElementById("todayIncome")
-      console.log(data)
       todayIncomElm.textContent = `${currencySymbol} ${data[0]?.total || 0}`
     })
   }).catch(err => console.log(err))

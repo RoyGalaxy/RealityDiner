@@ -18,8 +18,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use("/api/checkout/webhook", bodyParser.raw({ type: '*/*' }));
-app.use("/api/whatsapp/webhook", bodyParser.raw({ type: '*/*' }));
+app.use("/checkout/webhook", bodyParser.raw({ type: '*/*' }));
+app.use("/whatsapp/webhook", bodyParser.raw({ type: '*/*' }));
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
@@ -70,15 +70,15 @@ app.use(cors(corsOptions));
 
 app.use(express.static("./public"))
 app.use(express.json())
-app.use("/api/users", userRoute)
-app.use("/api/auth", authRoute)
-app.use("/api/restaurants/", restaurantRoute)
-app.use("/api/products", productRoute)
-app.use("/api/carts", cartRoute)
-app.use("/api/orders", orderRoute)
-app.use("/api/checkout", stripeRoute)
-app.use("/api/colors", colorSchemeRoute)
-app.use("/api/metrics", metricsRoute)
+app.use("/users", userRoute)
+app.use("/auth", authRoute)
+app.use("/restaurants/", restaurantRoute)
+app.use("/products", productRoute)
+app.use("/carts", cartRoute)
+app.use("/orders", orderRoute)
+app.use("/checkout", stripeRoute)
+app.use("/colors", colorSchemeRoute)
+app.use("/metrics", metricsRoute)
 
 mongoose.set('strictQuery', false)
 mongoose

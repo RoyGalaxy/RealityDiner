@@ -16,7 +16,6 @@ app.get("/webhook", (req,res) => {
 
 app.post("/webhook", (req,res) => {
     let body = req.body;
-    console.log(JSON.stringify(body,null,2))
 
     if(body.object){
         if(

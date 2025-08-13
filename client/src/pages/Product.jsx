@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 import AnimatedContent from '../components/reactbits/AnimatedComponent'
@@ -35,7 +35,7 @@ const Product = () => {
             <FiBox />
             View in 3D
           </button>
-          <img src={product && product?.image} className='w-full aspect-square rounded-xl shadow-lg bg-slate-300 mb-8' alt="" />
+          <img src={product ? product.image : null} className='w-full aspect-square rounded-xl shadow-lg bg-slate-300 mb-8' alt="" />
         </AnimatedContent>
         {/* Product Info */}
         <div className='px-3 md:p-12'>

@@ -34,8 +34,6 @@ router.post('/create/', verifyTokenAndAdmin, async (req,res) => {
             strFields[file] = files[file][0].filename;
         }
 
-        console.log(strFields)
-
         // uploading files
         for(let file in files){
             const oldPath = files[file][0].filepath

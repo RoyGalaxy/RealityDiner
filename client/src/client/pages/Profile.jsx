@@ -24,7 +24,6 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: Implement API call to update profile
-    console.log('Updated profile data:', profileData);
     setIsEditing(false);
   };
 

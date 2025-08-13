@@ -12,7 +12,6 @@ const Login = () => {
   const navigate = useNavigate()
 
   const handleLogin = async (otp) => {
-    console.log(otp)
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
         method: 'POST',

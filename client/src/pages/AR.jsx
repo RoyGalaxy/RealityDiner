@@ -10,7 +10,6 @@ const AR = () => {
   const navigate = useNavigate()
 
   const product = useMemo(() => getProductById(id))
-  console.log(product)
 
 
   return (

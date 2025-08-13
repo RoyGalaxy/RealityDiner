@@ -45,7 +45,6 @@ const ClientDashboard = () => {
       })
       const jsonRes = await response.json();
       if (jsonRes.success) {
-        console.log('Order status updated successfully');
         setOrders(prevOrders =>
           prevOrders.map(order =>
             order._id === orderId ? { ...order, status: newStatus } : order

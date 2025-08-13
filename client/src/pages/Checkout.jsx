@@ -40,7 +40,6 @@ const Checkout = () => {
             city: data.address.city || data.address.town || data.address.village || "",
             state: data.address.state || "",
           });
-          console.log(address)
         } catch (error) {
           console.error("Error fetching address:", error);
         }
@@ -67,7 +66,6 @@ const Checkout = () => {
       const items = [];
       for(const key in cartItems){
         const product = getProductById(key);
-        console.log(product)
         items.push({
           itemId: product._id,
           name: product.name,
