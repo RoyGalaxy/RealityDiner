@@ -28,6 +28,7 @@ export const ShopContextProvider = ({ children }) => {
     queryKey: ["products", restaurantId],
     queryFn: fetchProducts,
     enabled: !!restaurantId, // Prevent fetching if restaurantId is falsy
+    refetchOnWindowFocus: false,
 });
 
   useEffect(() => {

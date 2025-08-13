@@ -17,7 +17,6 @@ const Admins = () => {
           }
         });
         const data = await response.json();
-        console.log(data);
         setAdmins(data);
         setLoading(false);
       } catch (err) {

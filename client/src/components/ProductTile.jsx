@@ -9,7 +9,7 @@ const ProductTile = () => {
   const { getProductsByCategory, currency } = useContext(ShopContext)
   const navigate = useNavigate()
   const { category } = useParams()
-  const products = getProductsByCategory(category)
+  const products = useMemo(() => getProductsByCategory(category), [category, getProductsByCategory])
 
   return (
     <div className="min-h-screen bg-gray-100 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 [&>*:first-child]:col-span-2 [&>*:first-child]:row-span-2 transition">

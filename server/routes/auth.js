@@ -168,7 +168,6 @@ router.post("/client/login", async (req, res) => {
 router.post("/admin/login", async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log(email,password)
         if (
             email !== process.env.ADMIN_EMAIL ||
             password !== process.env.ADMIN_PASSWORD

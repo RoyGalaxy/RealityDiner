@@ -8,7 +8,6 @@ const Layout = ({ children }) => {
   const { restaurantId, setRestaurant, isLoading } = useContext(ShopContext);
 
   const fetchRestaurant = async (clientId, clientToken) => {
-    console.log(isLoading);
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/restaurants/client/${clientId}`, {
       headers: {
         'Authorization': `Bearer ${clientToken}`
@@ -23,7 +22,6 @@ const Layout = ({ children }) => {
       const clientData = JSON.parse(Cookies.get('clientData'));
       const clientToken = Cookies.get('clientToken');
       fetchRestaurant(clientData._id, clientToken);
-      console.log(isLoading);
     }
   }, [])
 

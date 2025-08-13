@@ -55,7 +55,6 @@ router.post("/set",verifyTokenAndAdmin,(req,res) => {
             console.log(err)
             res.end()
         }else{
-            console.log("file written successfully!")
             res.send("Color Scheme Set Successfully")
         }
     })
