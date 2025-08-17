@@ -102,7 +102,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get Restaurant by ID
-router.get('/restaurant/:id', verifyTokenAndSuperAdmin, async (req, res) => {
+router.get('/restaurant/:id', async (req, res) => {
     try {
         const restaurant = await Restaurant.findById(req.params.id);
         if (!restaurant) {
