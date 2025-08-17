@@ -24,7 +24,7 @@ const Home = () => {
 
   const handleClick = (restaurant) => {
     setRestaurant(restaurant);
-    navigate(`/categories/`);
+    navigate(`/restaurant/${restaurant._id}/categories/`);
   }
 
   return (

@@ -4,8 +4,6 @@ const bodyParser = require("body-parser")
 const dotenv = require("dotenv")
 const cors = require("cors")
 
-const Product = require('./models/Product')
-
 const app = express()
 
 dotenv.config();
@@ -45,7 +43,9 @@ const metricsRoute = require("./routes/metrics")
 // Define allowed origins from environment variables or use defaults
 const allowedOrigins = [
     process.env.CLIENT_URL,
-    process.env.ADMIN_URL
+    process.env.ADMIN_URL,
+    "http://localhost:5174",
+    "http://localhost:5173",
 ];
 
 // Configure CORS options with support for multiple origins
